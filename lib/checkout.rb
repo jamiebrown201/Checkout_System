@@ -1,9 +1,12 @@
+require 'bigdecimal'
+require_relative 'basket'
+
 class Checkout
   def initialize
-    @skeleleton = "working"
+
   end
 
-  def skeleleton
-    @skeleleton
+  def scan(item)
+
   end
 end
