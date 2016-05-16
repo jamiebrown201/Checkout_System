@@ -1,11 +1,11 @@
 require_relative '../lib/checkout'
 
 describe Checkout do
-
+  let(:basket) { double :Basket }
+  let(:basket_klass) { double :basket_klass, new: basket }
   let(:item) {double :Item, code: '001'}
-  let(:products) {[item]}
-  let(:basket) { double :Basket}
-  subject(:checkout) { described_class.new(products, basket) }
+  let(:product_list) {[item]}
+  subject(:checkout) { described_class.new(product_list, basket_klass) }
 
   describe '#scan' do
     it 'is expected to raise an error if given a code that is not valid' do
@@ -16,7 +16,8 @@ describe Checkout do
     end
     it 'adds the item to the current_order hash' do
       checkout.scan('001')
-      expect(checkout.current_order).to include({"001" => 1})
+      checkout.scan('001')
+      expect(checkout.current_order).to include({"001" => 2})
     end
   end
 
@@ -24,7 +25,7 @@ describe Checkout do
     it 'is expected to return the total of basket' do
       checkout.scan('001')
       checkout.scan('001')
-      allow(basket).to receeive(:total).with({'001' => 2}).and_return(1000)
+      allow(basket).to receive(:total).with({'001' => 2}).and_return(1000)
       expect(checkout.total).to eq "£10.00"
     end
   end
