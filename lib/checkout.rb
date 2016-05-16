@@ -5,7 +5,7 @@ class Checkout
   attr_reader :product_list
   attr_accessor :current_order
 
-  def initialize(product_list)
+  def initialize(product_list, basket_Klass)
     @product_list = product_list
     @current_order = Hash.new(0)
   end
@@ -15,10 +15,12 @@ class Checkout
     current_order[item_code] += 1
   end
 
+
   private
 
   def item_in_product_list?(item_code)
     product_list.map{ |product| product.code }.include?(item_code)
   end
+
 
 end
