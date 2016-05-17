@@ -2,12 +2,12 @@ require 'bigdecimal'
 require_relative 'basket'
 
 class Checkout
-  attr_reader :current_order
+  attr_reader :current_order, :basket
 
   def initialize(product_list, basket_klass, promotions=[])
     @product_list = product_list
     @current_order = Hash.new(0)
-    @basket = basket_klass.new(product_list)
+    @basket = basket_klass.new(product_list, promotions)
     @promotions = promotions
   end
 
@@ -17,13 +17,11 @@ class Checkout
   end
 
   def total
-    "£10.00"
+    '£%.2f' % basket.calculate_total(current_order)
   end
 
   private
   attr_reader :product_list
-
-
 
   def item_in_product_list?(item_code)
     product_list.map{ |product| product.code }.include?(item_code)
