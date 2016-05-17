@@ -3,4 +3,5 @@ class Percentage
     @percentage = percentage
     @minimum_price = minimum_price
   end
+
 end

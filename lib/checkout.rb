@@ -4,10 +4,11 @@ require_relative 'basket'
 class Checkout
   attr_reader :current_order
 
-  def initialize(product_list, basket_klass)
+  def initialize(product_list, basket_klass, promotions=[])
     @product_list = product_list
     @current_order = Hash.new(0)
     @basket = basket_klass.new(product_list)
+    @promotions = promotions
   end
 
   def scan(item_code)
