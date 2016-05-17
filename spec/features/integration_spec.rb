@@ -30,4 +30,12 @@ describe 'Integration spec' do
     expect(checkout.total).to eq '£36.95'
   end
 
+  it 'applies both discounts' do
+    checkout.scan '001'
+    checkout.scan '002'
+    checkout.scan '001'
+    checkout.scan '003'
+    expect(checkout.total).to eq '£73.76'
+  end
+
 end

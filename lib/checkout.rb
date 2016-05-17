@@ -17,7 +17,7 @@ class Checkout
   end
 
   def total
-    '£%.2f' % basket.calculate_total(current_order)
+    '£%.2f' % basket.calculate_total(current_order).round(2)
   end
 
   private

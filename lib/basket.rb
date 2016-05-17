@@ -12,7 +12,7 @@ class Basket
     total_after_discount(total_before_discount(array_of_prices), current_order)
   end
 
-  # private
+  private
   attr_reader :product_list, :promotions
 
   def total_before_discount(array_of_prices)
