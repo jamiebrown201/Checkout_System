@@ -16,7 +16,7 @@ describe 'Integration spec' do
   let(:promotions) { [travel_card_discount, ten_percent_discount] }
   subject(:checkout) { Checkout.new(products, Basket, promotions) }
 
-  it 'A 10% discount is applied when order is over £60' do
+  it 'applies a 10% discount when order is over £60' do
     checkout.scan '001'
     checkout.scan '002'
     checkout.scan '003'

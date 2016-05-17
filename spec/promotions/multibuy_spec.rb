@@ -1,7 +1,7 @@
 require_relative '../../lib/promotions/multibuy'
 
 describe MultiBuy do
-  subject(:multi_buy) { described_class.new("TEST", 0.75, 3) }
+  subject(:multi_buy) { described_class.new("TEST", 3, 0.75) }
 
   describe '#apply' do
     it 'is expected to apply the discount on orders which contain more than the number of items' do
