@@ -4,7 +4,7 @@ class Percentage
     @minimum_price = minimum_price
   end
 
-  def apply(current_total)
+  def apply(current_total, current_order)
     is_order_eligible?(current_total) ? apply_promotion(current_total) : 0
   end
 
@@ -17,6 +17,6 @@ class Percentage
   end
 
   def apply_promotion(current_total)
-    current_total - (current_total / percentage)
+    current_total * percentage / 100
   end
 end

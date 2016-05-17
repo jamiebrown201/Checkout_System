@@ -1,10 +1,8 @@
 class MultiBuy
-  def initialize(procuct, price_change, discount)
+  def initialize(product, discount, minimum_items)
     @product = product
-    @price_change = price_change
+    @discount = discount
+    @minimum_items = minimum_items
   end
 
-  def apply
-
-  end
 end

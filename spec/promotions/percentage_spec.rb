@@ -5,11 +5,11 @@ describe Percentage do
 
   describe '#apply' do
     it 'applies a discount if order total is over a minimum price' do
-      expect(percentage.apply(60)).to eq 54
+      expect(percentage.apply(60, 100)).to eq 6
     end
 
     it 'does not apply the discount if the order is below the minimum price' do
-      expect(percentage.apply(40)).to eq 0
+      expect(percentage.apply(40, 100)).to eq 0
     end
   end
 end
