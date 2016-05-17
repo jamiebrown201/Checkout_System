@@ -22,4 +22,12 @@ describe 'Integration spec' do
     checkout.scan '003'
     expect(checkout.total).to eq '£66.78'
   end
+
+  it 'applies a multibuy discount' do
+    checkout.scan '001'
+    checkout.scan '003'
+    checkout.scan '001'
+    expect(checkout.total).to eq '£36.95'
+  end
+
 end
