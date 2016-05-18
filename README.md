@@ -72,7 +72,7 @@ checkout.total
 
 ```
 #Tests
-To run the tests just run `rspec` in the route directory.
+To run the tests just run `rspec` in the root directory.
 
 #Future improvements
 As this is just a simple command line app there are elements that can be improved. Most notably using a database for the products as creating them as objects and loading them in each time is not efficient.
