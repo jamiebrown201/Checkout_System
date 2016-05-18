@@ -8,7 +8,7 @@ class Basket
 
   def calculate_total(current_order)
     prices = get_prices(product_list)
-    array_of_prices = array_of_prices(prices, current_order)
+    array_of_prices = total_item_prices(prices, current_order)
     total_after_discount(total_before_discount(array_of_prices), current_order)
   end
 
@@ -25,7 +25,7 @@ class Basket
     end
   end
 
-  def array_of_prices(prices, current_order)
+  def total_item_prices(prices, current_order)
     current_order.map{|key, value| prices[key] * value}
   end
 

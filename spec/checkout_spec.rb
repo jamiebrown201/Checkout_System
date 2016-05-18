@@ -22,11 +22,11 @@ describe Checkout do
   end
 
   describe '#total' do
-    it 'is expected to return the total of basket' do
-      checkout.scan('001')
-      checkout.scan('001')
-      allow(basket).to receive(:total).with({'001' => 2}).and_return(1000)
-      expect(checkout.total).to eq "£10.00"
+      it 'is expected to return a formatted string of ' do
+        checkout.scan('001')
+        checkout.scan('001')
+        allow(basket).to receive(:calculate_total).with({'001' => 2}).and_return(BigDecimal("5.00"))
+        expect(checkout.total).to eq '£5.00'
     end
   end
 end
