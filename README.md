@@ -13,7 +13,7 @@ $ bundle install
 ```
 #Running the system
 The program is a command line app and can by used in a REPL such as irb. Run irb in your command line and use the following commands.
-```
+```ruby
 irb
 #Firstly you need to require all the ruby files that make up the system.
 
