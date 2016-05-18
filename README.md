@@ -7,9 +7,9 @@ Make sure your computer has [Ruby](https://www.ruby-lang.org/en/) installed by r
 Clone and download the repo to your local machine and run bundle(if you don't have bundler installed you will need to run `gem install bundler`)
 
 ```
-$ git@github.com:jamiebrown201/check-out.git
-$ cd check-out
-$ bundle install
+git clone git@github.com:jamiebrown201/check-out.git
+cd check-out
+bundle install
 ```
 #Running the system
 The program is a command line app and can by used in a REPL such as irb. Run irb in your command line and use the following commands.
