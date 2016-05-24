@@ -1,31 +1,31 @@
-require 'bigdecimal'
-require_relative 'basket'
+# require 'bigdecimal'
+# require_relative 'basket'
 
 class Checkout
-  attr_reader :current_order, :basket
+  attr_reader :inventory, :current_order, :basket_klass
 
-  def initialize(product_list, basket_klass, promotions=[])
-    @product_list = product_list
+  def initialize(args)
+    @inventory = args[:inventory]
     @current_order = Hash.new(0)
-    @basket = basket_klass.new(product_list, promotions)
-    @promotions = promotions
+    @basket_klass = args[:basket_klass].new(args[:inventory], args[:promotions])
   end
 
   def scan(item_code)
-    fail "Cannot find a product with #{item_code} in the product list" unless item_in_product_list?(item_code)
+    fail "Sorry #{item_code} is an invalid item code" unless item_in_inventory?(item_code)
     current_order[item_code] += 1
   end
 
   def total
-    '£%.2f' % basket.calculate_total(current_order).round(2)
+    display(basket_klass.calculate_total(current_order))
   end
 
   private
-  attr_reader :product_list
 
-  def item_in_product_list?(item_code)
-    product_list.map{ |product| product.code }.include?(item_code)
+  def item_in_inventory?(item_code)
+    inventory.map{ |product| product.code }.include?(item_code)
   end
 
-
+  def display(unformatted)
+    '£%.2f' % unformatted.round(2)
+  end
 end
