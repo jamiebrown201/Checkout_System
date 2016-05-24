@@ -9,5 +9,4 @@ describe ItemFactory do
     expect(testing.name).to eq("test")
     expect(testing.price).to eq(BigDecimal("9.25"))
   end
-
 end

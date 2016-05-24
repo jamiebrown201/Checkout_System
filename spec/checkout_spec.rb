@@ -9,8 +9,7 @@ describe Checkout do
   describe '#scan' do
     it 'scanning an item adds it to the current order' do
       checkout.scan("001")
-      checkout.scan("001")
-      expect(checkout.current_order).to eq({"001" => 2})
+      expect(checkout.scan("001")).to eq(2)
     end
     it 'raises an error if you scan an invalid item' do
       expect{(checkout.scan("111"))}.to raise_error("Sorry 111 is an invalid item code")
@@ -18,7 +17,7 @@ describe Checkout do
   end
 
   describe '#total' do
-    it 'is expected to return a formatted string of ' do
+    it 'is expected to return a formatted string with the price in pounds' do
       checkout.scan('001')
       checkout.scan('001')
       allow(basket).to receive(:calculate_total).with({'001' => 2}).and_return(BigDecimal("5.00"))

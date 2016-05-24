@@ -30,7 +30,7 @@ require_relative '../../lib/promotions/multibuy'
 # You can create items easily using the Item factory. Inputting an array with
 # the code first, name second and price as a BigDecimal third.
 
-Travel Card Holder = ItemFactory.build(["001", "Travel Card Holder", BigDecimal("9.25")]),
+travel_card_holder = ItemFactory.build(["001", "Travel Card Holder", BigDecimal("9.25")]),
 
 #I have already loaded the three items for this exercise in a config module
 #for ease of use.

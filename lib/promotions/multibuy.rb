@@ -6,14 +6,14 @@ class Multibuy
   end
 
   def apply(current_total, current_order)
-    is_the_order_eligable?(current_order) ? apply_discount(current_order) : 0
+    order_eligable?(current_order) ? apply_discount(current_order) : 0
   end
 
   private
 
   attr_reader :item_code, :minimum_quantity, :discount
 
-  def is_the_order_eligable?(current_order)
+  def order_eligable?(current_order)
     current_order[item_code] >= minimum_quantity
   end
 

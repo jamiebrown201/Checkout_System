@@ -5,11 +5,11 @@ class Basket
   end
 
   def calculate_total(current_order)
-    total_after_discount(total_before_discount(current_order, get_item_prices), current_order)
+    total_after_discount(total_before_discount(current_order, item_prices), current_order)
   end
 
   private
-  
+
   attr_reader :inventory, :promotions
 
   def total_before_discount(current_order, item_prices)
@@ -22,7 +22,7 @@ class Basket
     end
   end
 
-  def get_item_prices
+  def item_prices
     inventory.each_with_object(Hash.new) do |item, hash|
       hash[item.code] = item.price
     end

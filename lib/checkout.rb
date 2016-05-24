@@ -2,7 +2,6 @@ require 'bigdecimal'
 require_relative 'basket'
 
 class Checkout
-  attr_reader :inventory, :current_order, :basket_klass
 
   def initialize(args)
     @inventory = args[:inventory]
@@ -20,6 +19,8 @@ class Checkout
   end
 
   private
+
+  attr_reader :inventory, :current_order, :basket_klass
 
   def item_in_inventory?(item_code)
     inventory.map{ |product| product.code }.include?(item_code)
