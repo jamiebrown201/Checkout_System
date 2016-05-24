@@ -1,5 +1,3 @@
-require 'bigdecimal'
-
 class Basket
   def initialize(inventory, promotions)
     @inventory = inventory
@@ -11,6 +9,7 @@ class Basket
   end
 
   private
+  
   attr_reader :inventory, :promotions
 
   def total_before_discount(current_order, item_prices)

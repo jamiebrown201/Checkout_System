@@ -1,5 +1,5 @@
-# require 'bigdecimal'
-# require_relative 'basket'
+require 'bigdecimal'
+require_relative 'basket'
 
 class Checkout
   attr_reader :inventory, :current_order, :basket_klass

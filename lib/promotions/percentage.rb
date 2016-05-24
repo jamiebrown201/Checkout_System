@@ -1,22 +1,22 @@
 class Percentage
-  def initialize(percentage, minimum_price)
-    @percentage = percentage
-    @minimum_price = minimum_price
+  def initialize(args)
+    @minimum_spend = args[:minimum_spend]
+    @percentage = args[:percentage]
   end
 
   def apply(current_total, current_order)
-    is_order_eligible?(current_total) ? apply_promotion(current_total) : 0
+    is_the_order_eligable?(current_total) ? apply_discount(current_total) : 0
   end
 
   private
 
-  attr_reader :minimum_price, :percentage
+  attr_reader :minimum_spend, :percentage
 
-  def is_order_eligible?(current_total)
-    current_total > minimum_price
+  def is_the_order_eligable?(current_total)
+    current_total >= minimum_spend
   end
 
-  def apply_promotion(current_total)
+  def apply_discount(current_total)
     current_total * percentage / 100
   end
 end
