@@ -1,22 +1,20 @@
 require 'bigdecimal'
 
 class Basket
-  def initialize(product_list, promotions=[])
-    @product_list = product_list
+  def initialize(inventory, promotions)
+    @inventory = inventory
     @promotions = promotions
   end
 
   def calculate_total(current_order)
-    prices = get_prices(product_list)
-    array_of_prices = total_item_prices(prices, current_order)
-    total_after_discount(total_before_discount(array_of_prices), current_order)
+    total_after_discount(total_before_discount(current_order, get_item_prices), current_order)
   end
 
   private
-  attr_reader :product_list, :promotions
+  attr_reader :inventory, :promotions
 
-  def total_before_discount(array_of_prices)
-    array_of_prices.reduce(:+)
+  def total_before_discount(current_order, item_prices)
+    current_order.map {|key, value| item_prices[key] * value }.reduce(:+)
   end
 
   def total_after_discount(total_before_discount, current_order)
@@ -25,13 +23,9 @@ class Basket
     end
   end
 
-  def total_item_prices(prices, current_order)
-    current_order.map{|key, value| prices[key] * value}
-  end
-
-  def get_prices(product_list)
-    product_list.each_with_object(Hash.new) do |product, hash|
-      hash[product.code] = product.price
+  def get_item_prices
+    inventory.each_with_object(Hash.new) do |item, hash|
+      hash[item.code] = item.price
     end
   end
 end
