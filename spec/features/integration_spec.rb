@@ -1,5 +1,5 @@
 require_relative '../../lib/checkout'
-require_relative '../../lib/item'
+require_relative '../../lib/item_factory'
 require_relative '../../lib/promotions/percentage'
 require_relative '../../lib/promotions/multibuy'
 describe 'Integration spec' do

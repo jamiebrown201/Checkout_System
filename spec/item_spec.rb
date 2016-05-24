@@ -1,18 +1,13 @@
-require_relative '../lib/item'
+require_relative '../lib/item_factory.rb'
+require 'config/item_test_config.rb'
 
-describe Item do
-  subject(:item) { described_class.new(001, "Travel Card Holder", "9.99") }
-
-  describe '#code' do
-    it 'is expected to return the code of the item' do
-      expect(item.code).to eq 001
-    end
-  end
-
-  describe '#price' do
-    it 'is expected to return the price of the item' do
-      expect(item.price).to eq 9.99
-    end
+describe ItemFactory do
+  subject(:item_factory) { described_class.new }
+  it 'creates a new open struct object with the correct attributes' do
+    testing = ItemFactory.build(ItemConfigTest.test)
+    expect(testing.code).to eq("001")
+    expect(testing.name).to eq("test")
+    expect(testing.price).to eq(BigDecimal("9.25"))
   end
 
 end
