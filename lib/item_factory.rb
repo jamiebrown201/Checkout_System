@@ -1,5 +1,4 @@
 require 'ostruct'
-require 'bigdecimal'
 require_relative 'item_config/items'
 
 module ItemFactory
