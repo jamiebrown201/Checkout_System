@@ -1,23 +1,23 @@
-class MultiBuy
-  def initialize(item_code, minimum_items, discount)
-    @item_code = item_code
-    @minimum_items = minimum_items
-    @discount = discount
+class Multibuy
+  def initialize(args)
+    @item_code = args[:item_code]
+    @minimum_quantity = args[:minimum_quantity]
+    @discount = args[:discount]
   end
 
   def apply(current_total, current_order)
-    is_order_eligible?(current_order) ? apply_promotion(current_order) : 0
+    is_the_order_eligable?(current_order) ? apply_discount(current_order) : 0
   end
 
   private
 
-  attr_reader :item_code, :minimum_items, :discount
+  attr_reader :item_code, :minimum_quantity, :discount
 
-  def apply_promotion(current_order)
-    current_order[item_code] * discount
+  def is_the_order_eligable?(current_order)
+    current_order[item_code] >= minimum_quantity
   end
 
-  def is_order_eligible?(current_order)
-    current_order[item_code] >= minimum_items
+  def apply_discount(current_order)
+    current_order[item_code] * discount
   end
 end
